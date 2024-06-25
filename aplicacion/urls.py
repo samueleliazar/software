@@ -1,4 +1,6 @@
 from django.urls import path, include
+from sitio import settings
+from django.conf.urls.static import static
 from .views import index, about, contact, gallery, testimonial, eliminarprod, editprod, catalogo, nuevosproductos, editarcompra, dashboard
 
 
@@ -16,3 +18,6 @@ urlpatterns = [
     path('dashboard/',dashboard,name='dashboard'),
     
 ]
+
+if settings.DEBUG:
+    urlpatterns+=static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
