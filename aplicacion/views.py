@@ -1,6 +1,6 @@
 from django.shortcuts import render
-from .models import Producto
-from .forms import ProductoForm, UpdateProductoForm, ReparacionForm
+from .models import Producto,Reparacion
+from .forms import ProductoForm, UpdateProductoForm, ReparacionForm, UpdateReparacionForm
 from django.shortcuts import get_object_or_404, redirect
 from django.conf import settings
 from django.contrib import messages
@@ -80,6 +80,25 @@ def nuevosreparaciones(request):
         "form":form
     }
     return render(request,'aplicacion/nuevosreparaciones.html', datos)
+
+def editprod(request, id):
+    reparacion=get_object_or_404(Reparacion, id=id)
+    
+    form=UpdateReparacionForm(instance=reparacion)
+    datos={
+        "form":form,
+        "reparacion":reparacion
+    }
+    
+    if request.method=="POST":
+        form=UpdateReparacionForm(data=request.POST, files=request.FILES, instance=reparacion)
+        if form.is_valid():
+            form.save()
+            messages.warning(request,'Reparacion Modificada Exitosamente')
+            return redirect(to="catalogo") #Remplazar por catalogo reparaciones
+        
+    return render(request,'aplicacion/editprod.html', datos) #Remplazar por editar reparaciones
+    
 
 def catalogo(request):
     producto=Producto.objects.all()

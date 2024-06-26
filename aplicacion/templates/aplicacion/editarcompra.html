@@ -15,20 +15,32 @@
         <div class="logo"></div>
         <ul class="menu">
             <li class="active">
-                <a href={% url "dashboard" %}>
+                <a href="#">
                     <i class="fas fa-tachometer-alt"></i>
                     <span>Dashboard</span>
                 </a>
             </li>
-
             <li>
                 <a href={% url "nuevosproductos" %}>
                     <i class="fas fa-star"></i>
                     <span>Productos</span>
                 </a>
             </li>
+        </li>
             <li>
+                <a href={% url "nuevosreparaciones" %}>
+                    <i class="fas fa-star"></i>
+                    <span>Nuevas Reparaciones</span>
+                </a>
             </li>
+        </li>
+            <li>
+                <a href={% url "catalogo" %}>
+                <i class="fas fa-barcode"></i>
+                <span>Catalogo</span>
+            </a>
+        </li>
+        </li>
             <li class="logout">
                 <a href={% url "index" %}>
                     <i class="fas fa-sign-out-alt"></i>
@@ -37,7 +49,6 @@
             </li>
         </ul>
     </div>
-
     <div class="main--content">
         <div class="header--wrapper">
             <div class="header--title">
