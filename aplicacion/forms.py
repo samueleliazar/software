@@ -5,12 +5,12 @@ class ProductoForm(forms.ModelForm):
     
     class Meta:
         model = Producto
-        fields = ['nombre','descripcion', 'precio','imagen']
+        fields = ['nombre','descripcion','stock', 'precio','imagen']
         
 
 class UpdateProductoForm(forms.ModelForm):
     
     class Meta:
         model = Producto
-        fields = ['nombre', 'descripcion', 'precio', 'imagen']
+        fields = ['nombre', 'descripcion','stock', 'precio', 'imagen']
         
