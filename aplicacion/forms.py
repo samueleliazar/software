@@ -1,5 +1,5 @@
 from django import forms
-from .models import Producto
+from .models import Producto,Reparacion
 
 class ProductoForm(forms.ModelForm):
     
@@ -14,3 +14,16 @@ class UpdateProductoForm(forms.ModelForm):
         model = Producto
         fields = ['nombre', 'descripcion','stock', 'precio', 'imagen']
         
+
+class ReparacionForm(forms.ModelForm):
+    
+    class Meta:
+        model = Reparacion
+        fields = ['nombre','descripcion', 'costo','imagen']
+        
+
+class UpdateReparacionForm(forms.ModelForm):
+    
+    class Meta:
+        model = Reparacion
+        fields = ['nombre', 'descripcion', 'costo', 'imagen']

@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from .models import Producto
-from .forms import ProductoForm, UpdateProductoForm
+from .forms import ProductoForm, UpdateProductoForm, ReparacionForm
 from django.shortcuts import get_object_or_404, redirect
 from django.conf import settings
 from django.contrib import messages
@@ -63,6 +63,23 @@ def nuevosproductos(request):
         "form":form
     }
     return render(request,'aplicacion/nuevosproductos.html', datos)
+
+def nuevosreparaciones(request):
+    
+    form=ReparacionForm()
+    
+    if request.method=="POST":
+        form=ProductoForm(data=request.POST, files=request.FILES)
+        if form.is_valid():
+            form.save()
+            
+            messages.succes(request,'Reparacion agregada exitosamente')
+            return redirect(to="catalogo")
+    
+    datos={
+        "form":form
+    }
+    return render(request,'aplicacion/nuevosreparaciones.html', datos)
 
 def catalogo(request):
     producto=Producto.objects.all()
