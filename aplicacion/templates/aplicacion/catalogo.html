@@ -61,6 +61,7 @@
                     <thead>
                             <tr>
                                 <th>ID</th>
+                                <th>Stock</th>
                                 <th>Imagen</th>
                                 <th>Nombre </th>
                                 <th>descripcion</th>
@@ -73,6 +74,7 @@
                         {%for p in producto %}
                         <tr>
                             <td> {{p.id}}</td>
+                            <td> {{p.stock}}</td>
                             <td><img src='{{p.imagen.url}}' alt={{p.nombre}} height="100"></td>
                             <td>{{p.nombre}}</td>
                             <td>{{p.descripcion}}</td>
