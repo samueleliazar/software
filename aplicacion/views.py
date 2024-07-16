@@ -29,6 +29,14 @@ def editarcompra(request):
 def dashboard(request):
     return render(request,'aplicacion/dashboard.html')
 
+def catalogorep(request):
+    reparacion=Reparacion.objects.all()
+    
+    datos={
+        "reparacion":reparacion
+    }
+    return render(request,'aplicacion/catalogorep.html', datos)
+
 def editprod(request, id):
     producto=get_object_or_404(Producto, id=id)
     
@@ -69,12 +77,12 @@ def nuevosreparaciones(request):
     form=ReparacionForm()
     
     if request.method=="POST":
-        form=ProductoForm(data=request.POST, files=request.FILES)
+        form=ReparacionForm(data=request.POST, files=request.FILES)
         if form.is_valid():
             form.save()
             
-            messages.succes(request,'Reparacion agregada exitosamente')
-            return redirect(to="catalogo")
+            messages.success(request,'Reparacion agregada exitosamente')
+            return redirect(to="catalogorep")
     
     datos={
         "form":form
@@ -95,7 +103,7 @@ def editprod(request, id):
         if form.is_valid():
             form.save()
             messages.warning(request,'Reparacion Modificada Exitosamente')
-            return redirect(to="catalogo") #Remplazar por catalogo reparaciones
+            return redirect(to="catalogorep") #Remplazar por catalogo reparaciones
         
     return render(request,'aplicacion/editprod.html', datos) #Remplazar por editar reparaciones
     

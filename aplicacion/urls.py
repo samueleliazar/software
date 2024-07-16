@@ -1,7 +1,7 @@
 from django.urls import path, include
 from sitio import settings
 from django.conf.urls.static import static
-from .views import index, about, contact, gallery, testimonial, eliminarprod, editprod, catalogo, nuevosproductos, editarcompra, dashboard, nuevosreparaciones
+from .views import index, about, contact, gallery, testimonial, eliminarprod, editprod, catalogo, nuevosproductos, editarcompra, dashboard, nuevosreparaciones, catalogorep
 
 
 urlpatterns = [
@@ -17,6 +17,7 @@ urlpatterns = [
     path('editarcompra/',editarcompra,name='editarcompra'),
     path('dashboard/',dashboard,name='dashboard'),
     path('nuevosreparaciones/',nuevosreparaciones,name='nuevosreparaciones'),
+    path('catalogorep/',catalogorep, name='catalogorep'),
     
 ]
 
